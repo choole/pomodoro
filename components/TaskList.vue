@@ -1,14 +1,14 @@
 <template>
 <!-- Make list that dynamically creates TaskCards -->
-    <div class="card flex justify-center">
-         <ul class="w-full border rounded-md divide-y divide-gray-200">
+    <div class="card flex justify-center pt-30">
+         <ul class="w-full items-center border rounded-md divide-y divide-gray-200">
               <li
                 v-for="item in countries"
                 :key="item.code"
                 :class="[
                     'p-3 cursor-pointer hover:bg-gray-700',
                 ]"
-      >
+              >
                 <div class="flex items-center">
                     <TaskCard :label="item.name"/>
                 </div>
