@@ -33,7 +33,7 @@
             </SplitterPanel>
             <SplitterPanel class="flex flex-col justify-center">
                 <div>Tasks</div>
-                <TaskCard/>
+                <TaskList/>
             </SplitterPanel>
         </Splitter>
     </div>
@@ -43,7 +43,6 @@
   <script setup lang="ts">
 import Splitter from 'primevue/splitter';
 import SplitterPanel from 'primevue/splitterpanel';
-import TaskCard from './TaskCard.vue';
 import Toolbar from 'primevue/toolbar';
-//import ComponentName from './ComponentName.vue';
+import TaskList from './TaskList.vue';
   </script>
