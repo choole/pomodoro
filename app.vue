@@ -7,4 +7,5 @@
 <script setup lang="ts">
 //import PomodoroForm from './components/PomodoroForm.vue'
 import MainComponent from './components/MainComponent.vue'
+
 </script>
