@@ -1,6 +1,5 @@
 import Aura from '@primeuix/themes/aura';
 import tailwindcss from '@tailwindcss/vite';
-import PrimeUI from 'tailwindcss-primeui';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2025-05-15',
@@ -16,7 +15,8 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxt/icon',
     '@nuxt/image',
-    '@primevue/nuxt-module'
+    '@primevue/nuxt-module',
+    '@pinia/nuxt'
   ],
   primevue:{
     options: {
