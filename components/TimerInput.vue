@@ -14,6 +14,7 @@
 	import { ref } from 'vue';
 	const value = ref(null);
 </script>
+
 <style scoped>
 .custom-otp-input {
     width: 40px;
