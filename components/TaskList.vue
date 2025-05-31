@@ -15,9 +15,6 @@
                     <TaskCard 
                         :task="item"
                         :hide="taskStore.hoveredItem === item.code ? 'visible': 'hidden' "
-                        @delete="taskStore.removeTask(item.code)"
-                        @update-task="taskStore.handleUpdateTask(item)"
-                        @update-sessions="taskStore.updateSessions(task.code,task.sessions)"
                     />
                 </div>
             </li>

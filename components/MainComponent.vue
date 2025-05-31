@@ -5,7 +5,7 @@
                 <div class="pb-10">INSERT LOGO HERE</div>
                 <!-- <ComponentName/> -->
 						<HeaderTabs/>
-						<TimerInput/>
+						<!-- <TimerInput/> -->
 						<AdjustButtons/>
             </SplitterPanel>
             <SplitterPanel class="flex flex-col justify-center">
