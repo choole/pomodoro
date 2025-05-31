@@ -33,7 +33,7 @@
     }
     function cleanUp() {
       isReadOnly.value=false;
-      toast.add({ severity: 'success', summary: 'Finished', detail: 'Timer is finished. Switching to next section...', life: 2000 });
+      toast.add({ severity: 'success', summary: 'Finished', detail: 'Timer is finished. Switching to next section...', life: 2500 });
       emit('finish');
       //TODO: Start the timer on next tab
       //TODO: Make buttons start timer from current active Tab

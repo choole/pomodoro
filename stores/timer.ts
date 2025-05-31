@@ -3,7 +3,7 @@ import { eventBus } from '@/utils/event-bus'
 
 export const useTimerStore = defineStore('timer', {
   state: () => ({
-    pomodoro: '1500',
+    pomodoro: '2500',
     shortBreak: '0500',
     longBreak: '1000',
     remainingTime: ""
@@ -11,7 +11,7 @@ export const useTimerStore = defineStore('timer', {
   actions: {
     stringToSeconds(timeStr){
       if (!/^\d{3,4}$/.test(timeStr)) {
-        throw new Error('Invalid format. Use MMSS format, e.g., "1530" for 15 minutes and 30 seconds.');
+        throw new Error('Invalid format. Use MMSS format, e.g., "2530" for 25 minutes and 30 seconds.');
       }
 
       // Pad to ensure 4 digits

@@ -6,9 +6,6 @@
                 <Tab value="0" class="tab-btn">Pomodoro</Tab>
                 <Tab value="1" class="tab-btn">Short break</Tab>
                 <Tab value="2" class="tab-btn">Long break</Tab>
-                <!-- <Tab value="0">Pomodoro</Tab> -->
-                <!-- <Tab value="1">Short break</Tab> -->
-                <!-- <Tab value="2">Long break</Tab> -->
             </TabList>
 
             <TabPanels>

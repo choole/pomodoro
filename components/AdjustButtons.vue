@@ -4,7 +4,7 @@
          <div class="flex justify-center space-x-4">
             <Button icon="pi pi-replay" severity="secondary" variant="text" raised rounded aria-label="Replay"/>
             <Button icon="pi pi-play-circle" severity="secondary" variant="text" raised rounded aria-label="Play" @click="timerStore.startPomodoro()"/>
-            <Button icon="pi pi-step-forward" severity="secondary" variant="text" raised rounded aria-label="Step forward" />
+            <Button icon="pi pi-pause-circle" severity="secondary" variant="text" raised rounded aria-label="Pause" />
          </div>
       </template>
    </Toolbar>
