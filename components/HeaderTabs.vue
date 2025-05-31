@@ -49,6 +49,7 @@ import Pomodoro from '../assets/cat-reading.gif';
 import ShortBreak from '../assets/cat-massage.gif';
 import LongBreak from '../assets/cat-sleep.gif';
 
+const timerStore=useTimerStore();
 const activeTab = ref(0);
 </script>
 
