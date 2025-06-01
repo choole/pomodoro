@@ -31,6 +31,9 @@
       value.value=payload.time
       // maybe show toast, switch tab, etc.
     }
+    function unlockTimerInput(){
+      isReadOnly.value=false;
+    }
     function cleanUp() {
       isReadOnly.value=false;
       toast.add({ severity: 'success', summary: 'Finished', detail: 'Timer is finished. Switching to next section...', life: 2500 });
@@ -42,10 +45,12 @@
     onMounted(() => {
       eventBus.on('time', updateTimer)
       eventBus.on('timer:done', cleanUp)
+      eventBus.on('timer:paused', unlockTimerInput)
     })
     onUnmounted(() => {
       eventBus.off('time', updateTimer)
       eventBus.off('timer:done', cleanUp)
+      eventBus.off('timer:paused', unlockTimerInput)
     })
 
 

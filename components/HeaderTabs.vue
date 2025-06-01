@@ -1,6 +1,6 @@
 <template>
     <div class="card flex justify-center">
-        <Tabs v-model:value="activeTab">
+        <Tabs v-model:value="activeTab" @update:value="eventBus.emit('activeTab',{tab: activeTab})">
 
             <TabList>
                 <Tab value="0" class="tab-btn">Pomodoro</Tab>
@@ -23,7 +23,7 @@
                         v-if="activeTab === '1'"
                         :time=timerStore.shortBreak
                         @update-value="payload => timerStore.setShortBreak(payload)"
-                        @finish="activeTab='2'" />
+                        @finish="activeTab='0'" />
                 </TabPanel>
                 <TabPanel value="2">
                     <ImageGif :image="LongBreak"/>
@@ -41,6 +41,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import { eventBus } from '@/utils/event-bus'
 import ImageGif from './ImageGif.vue';
 import Pomodoro from '../assets/cat-reading.gif';
 import ShortBreak from '../assets/cat-massage.gif';

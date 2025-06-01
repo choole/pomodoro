@@ -4,10 +4,14 @@ import { useTaskStore } from './tasks'
 
 export const useTimerStore = defineStore('timer', {
   state: () => ({
+    defaultPomodoro: '2500',
+    defaultShortBreak: '0500',
+    defaultLongBreak: '1000',
     pomodoro: '2500',
     shortBreak: '0500',
     longBreak: '1000',
-    remainingTime: ""
+    remainingTime: "",
+    interval: ''
   }),
   actions: {
     stringToSeconds(timeStr){
@@ -31,21 +35,58 @@ export const useTimerStore = defineStore('timer', {
 
       return minutesStr + secondsStr;
     },
+    startTimer(tab){
+      switch (tab) {
+        case "0":
+          this.startPomodoro();
+          break;
+        case "1":
+          this.startShortBreak();
+          break;
+        case "2":
+          this.startLongBreak();
+          break;
+        default:
+          console.log("Tab is neither 0,1 or 2 somehow");
+          break;
+      }
+    },
+    pauseTimer(tab){
+      clearInterval(this.interval);
+      eventBus.emit('timer:paused');
+      const remainingString=this.secondsToString(this.remainingTime);
+      switch (tab) {
+        case "0":
+          this.pomodoro=remainingString;
+          break;
+        case "1":
+          this.shortBreak=remainingString;
+          break;
+        case "2":
+          this.longBreak=remainingString;
+          break;
+        default:
+          console.log("Tab is neither 0,1 or 2 somehow");
+          break;
+      }
+    },
     setPomodoro(time: string){
       this.pomodoro=time;
+      this.defaultPomodoro=time;
       console.log(time);
     },
     startPomodoro(){
       this.remainingTime=this.stringToSeconds(this.pomodoro);
 
-      const interval = setInterval(() => {
+      this.interval = setInterval(() => {
         if (this.remainingTime > 0) {
           this.remainingTime--;
           eventBus.emit('time',{time: this.secondsToString(this.remainingTime)});
         }
 
         if (this.remainingTime === 0) {
-          clearInterval(interval);
+          this.pomodoro=this.defaultPomodoro;
+          clearInterval(this.interval);
           eventBus.emit('timer:done');
           
         const taskStore = useTaskStore();
@@ -60,27 +101,45 @@ export const useTimerStore = defineStore('timer', {
     },
     setShortBreak(time){
       this.shortBreak=time;
+      this.defaultShortBreak=time;
       console.log(this.shortBreak);
     },
     startShortBreak(){
-      this.remainingTime=stringToSeconds(this.shortBreak);
-      setInterval(()=>this.remainingTime--,1000);
+      this.remainingTime=this.stringToSeconds(this.shortBreak);
+      this.interval = setInterval(() => {
+        if (this.remainingTime > 0) {
+          this.remainingTime--;
+          eventBus.emit('time',{time: this.secondsToString(this.remainingTime)});
+        }
+
       if(this.remainingTime==0){
+        this.shortBreak=this.defaultShortBreak;
+        clearInterval(this.interval);
         //display toast
         console.log("Done");
       }
+      }, 1000);
     },
     setLongBreak(time){
       this.longBreak=time;
+      this.defaultLongBreak=time;
       console.log(this.longBreak);
     },
     startLongBreak(){
-      this.remainingTime=stringToSeconds(this.longBreak);
-      setInterval(()=>this.remainingTime--,1000);
+      this.remainingTime=this.stringToSeconds(this.longBreak);
+      this.interval = setInterval(() => {
+        if (this.remainingTime > 0) {
+          this.remainingTime--;
+          eventBus.emit('time',{time: this.secondsToString(this.remainingTime)});
+        }
+
       if(this.remainingTime==0){
+        this.longBreak=this.defaultLongBreak;
+        clearInterval(this.interval);
         //display toast
         console.log("Done");
       }
+      }, 1000);
     }
   }
 })
