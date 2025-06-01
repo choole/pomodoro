@@ -4,13 +4,14 @@
       
       <SplitterPanel>
        <div class="flex justify-end w-full px-4 mt-4">
-          <Button 
-            icon="pi pi-external-link" 
-            severity="secondary"
-            variant="text" 
-            rounded 
-            aria-label="Fullscreen"
-          />
+          <FullScreen/>
+          <!-- <Button  -->
+          <!--   icon="pi pi-external-link"  -->
+          <!--   severity="secondary" -->
+          <!--   variant="text"  -->
+          <!--   rounded  -->
+          <!--   aria-label="Fullscreen" -->
+          <!-- /> -->
         </div>
 
         <div class="flex flex-col items-center justify-center">
@@ -22,7 +23,7 @@
       </SplitterPanel>
 
       <SplitterPanel>
-		<div class="flex justify-end w-full px-4 mt-4">
+      	<div class="flex justify-end w-full px-4 mt-4">
           <Button 
             icon="pi pi-cog" 
             severity="secondary"
@@ -48,5 +49,6 @@ import SplitterPanel from 'primevue/splitterpanel';
 import HeaderTabs from './HeaderTabs.vue';
 import TaskList from './TaskList.vue';
 import AdjustButtons from './AdjustButtons.vue';
+import FullScreen from './FullScreen.vue';
 import Button from 'primevue/button';
 </script>
