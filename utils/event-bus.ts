@@ -4,6 +4,7 @@ type Events = {
   'time': {time: number}
   'timer:done': void
   'timer:paused': void
+  'timer:replay': {time: number}
   'activeTab': {tab: number}
 }
 

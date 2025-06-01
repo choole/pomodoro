@@ -35,6 +35,26 @@ export const useTimerStore = defineStore('timer', {
 
       return minutesStr + secondsStr;
     },
+    replayTimer(tab){
+      clearInterval(this.interval);
+      switch (tab) {
+        case "0":
+          this.pomodoro=this.defaultPomodoro;
+          eventBus.emit('timer:replay',{time: this.pomodoro});
+          break;
+        case "1":
+          this.shortBreak=this.defaultShortBreak;
+          eventBus.emit('timer:replay',{time: this.shortBreak});
+          break;
+        case "2":
+          this.longBreak=this.defaultLongBreak;
+          eventBus.emit('timer:replay',{time: this.longBreak});
+          break;
+        default:
+          console.log("Tab is neither 0,1 or 2 somehow");
+          break;
+      }
+    },
     startTimer(tab){
       switch (tab) {
         case "0":

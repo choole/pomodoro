@@ -34,6 +34,10 @@
     function unlockTimerInput(){
       isReadOnly.value=false;
     }
+    function resetTimer(payload){
+      value.value=payload.time
+      isReadOnly.value=false;
+    }
     function cleanUp() {
       isReadOnly.value=false;
       toast.add({ severity: 'success', summary: 'Finished', detail: 'Timer is finished. Switching to next section...', life: 2500 });
@@ -46,11 +50,13 @@
       eventBus.on('time', updateTimer)
       eventBus.on('timer:done', cleanUp)
       eventBus.on('timer:paused', unlockTimerInput)
+      eventBus.on('timer:replay', resetTimer)
     })
     onUnmounted(() => {
       eventBus.off('time', updateTimer)
       eventBus.off('timer:done', cleanUp)
       eventBus.off('timer:paused', unlockTimerInput)
+      eventBus.on('timer:replay', resetTimer)
     })
 
 
