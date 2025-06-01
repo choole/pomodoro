@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { eventBus } from '@/utils/event-bus'
+import { useTaskStore } from './tasks'
 
 export const useTimerStore = defineStore('timer', {
   state: () => ({
@@ -46,7 +47,14 @@ export const useTimerStore = defineStore('timer', {
         if (this.remainingTime === 0) {
           clearInterval(interval);
           eventBus.emit('timer:done');
-          // TODO: update task store 
+          
+        const taskStore = useTaskStore();
+        const taskToUpdate = taskStore.tasks.find(t => t.completedSessions < t.sessions);
+
+          if (taskToUpdate) {
+            taskToUpdate.completedSessions++;
+            taskStore.updateSessions(taskToUpdate);  
+          }
         }
       }, 1000);
     },
